@@ -7,11 +7,9 @@
 	<title>Splashview Demo</title> 
 	<link rel="stylesheet" href="splashview.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
-	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>
-</head> 
-
-<script type="text/javascript">
+	<script type="text/javascript">
 	
 	// (1) screen dimensions
 	var   screenSize = Math.max(screen.width,screen.height)
@@ -21,7 +19,7 @@
 		, h=screen.height
 		, o = window.orientation
 		, sheet = document.styleSheets[0]; 
-	
+
 	// (2) orientation
 	if ( navigator.platform ==="iPad" ){
 		dir = ( o == 0 || o == 180)  ? "p" : "l";
@@ -55,10 +53,13 @@
 	
 	// (5) clean up
 	// remove the splash class after a setTimeout
-	setTimeout(function(){
+	window.setTimeout(function(){
 		document.getElementsByTagName("body")[0].className = document.getElementsByTagName("body")[0].className.replace(/\bsplash\b/,'');
 		},4000);
 </script>
+</head> 
+
+
 
 <body class="splash"> 
 

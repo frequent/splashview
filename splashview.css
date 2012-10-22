@@ -1,12 +1,4 @@
-/* 
-	The .splash class should be set on the <body> element
-    When the page loads the blank canvas will be visible
-	until the splash image has loaded, covering everything
-	underneath. The background image will be added by
-	Javascript. By removing the .splash with a setTimeout
-	both the canvas and image display duration can be set
-	according to need.
-*/
+
 .splash:before { 
 	/* dimensions */
 	width: 100%; 
@@ -16,11 +8,11 @@
 	left: 0; 
 	right: 0; 
 	display: block; 
-	height: 100%; 
+	height: 99.9% ; 
 	z-index: 999999;  
 	
 	/* background canvas */
-	background-color: #fff; 
+	background-color: #fff;
 	
 	/* loading... text */
 	content: "Birdseye"; 
@@ -32,3 +24,4 @@
 	line-height: 150px; 
 	vertical-align: bottom; 
 	}
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Splashview Demo</title>
+
+    <style type="text/css">
+    .splash:before {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      display: block;
+      height: 100%;
+      overflow: hidden;
+      z-index: 999999;
+      background-color: blue;
+      content: "Splashview Demo";
+      color: #fff;
+      font-family: sans-serif;
+      font-size: 1.5em;
+      line-height: 150vh;
+      vertical-align: bottom;
+      text-align: center;
+      font-weight: bold;
+    }
+    </style>
+    <script type="text/javascript">
+    (function (window, document, screen, Math) {
+      var style_element = document.createElement('style');
+      var str = " no-repeat center center fixed;" +
+                " -webkit-background-size: 100%;" +
+                "    -moz-background-size: 100%;" +
+                "      -o-background-size: 100%;" +
+                "         background-size: 100%;" +
+                " -webkit-background-size: cover;" +
+                "    -moz-background-size: cover;" +
+                "      -o-background-size: cover;" +
+                "         background-size: cover;";
+      var w = screen.width;
+      var h = screen.height;
+      var o = window.orientation  ;
+      var r = window.devicePixelRatio;
+      var screen_size = Math.max(w, h);
+      var style_sheet;
+      var url;
+      var dir;
+
+      document.head.appendChild(style_element);
+      style_sheet = style_element.sheet;
+      
+      // orientation
+      if (window.navigator.platform ==="iPad") {
+        dir = (o === 0 || o === 180)  ? "portrait" : "landscape";
+      } else {
+        dir = (w < h || (o == 0 || o == 180)) ? "portrait" : "landscape";
+      }
+
+      // url will be img/[1|2|3|4|6|9]_splash_[portait|landscape].png
+      if (screen_size <= 640) {
+        url = "img/" + (1 * r) + "_splash_" + dir + ".jpg";
+      } else if (screen_size > 640 && screen_size < 1024) {
+        url = "img/" + (2 * r) + "_splash_" + dir + ".jpg";
+      } else if (screen_size >= 1024) {
+        url = "img/" + (3 * r) + "_splash_" + dir + ".jpg";
+      }
+      
+      if ('addRule' in style_sheet) { 
+        style_sheet.addRule(".splash:before", "background: url('" + url + "')" + str, 0); 
+      } else if ('insertRule' in sheet) { 
+        style_sheet.insertRule(".splash:before { background: url('" + url + "')" + str + " }", 0); 
+      }
+
+      // remove splashscreen
+	    window.setTimeout(function () {
+		    document.body.classList.remove("splash");
+		  }, 4000);
+    }(window, document, screen, Math));
+    </script>
+
+  </head>
+  <body class="splash">
+    <p>This is a demo for splashview, a cross browser/device splash screen made before pwa became en vouge</p>
+		<p>For more info, please check the repo on Git: <a href="https://github.com/frequent/splashview">Splashview</a>
+  </body>
+</html>
